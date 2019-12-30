@@ -45,4 +45,8 @@ class SDViewController: UIViewController, NativeAdViewProtocol {
         
         adPlaceholder.addSubviewAndCover(validNativeAdView)
     }
+    
+    func adFailedToLoad() {
+        reloadAdButton.isEnabled = true
+    }
 }

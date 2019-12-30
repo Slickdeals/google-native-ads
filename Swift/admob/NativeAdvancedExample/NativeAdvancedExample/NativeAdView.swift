@@ -33,6 +33,7 @@ class SDGADUnifiedNativeAdView: GADUnifiedNativeAdView {
 
 protocol NativeAdViewProtocol: class {
     func adLoadedSuccessfully()
+    func adFailedToLoad()
 }
 
 protocol LoadableAdView: class {
@@ -84,7 +85,7 @@ class NativeAdView: UIView, LoadableAdView {
         adOptions.preferredAdChoicesPosition = .topRightCorner
         
         // Ad types
-        let adTypes: [GADAdLoaderAdType] = [.unifiedNative, .dfpBanner]
+        let adTypes: [GADAdLoaderAdType] = [.unifiedNative]
         
         // Initialize loader and request
         self.googleDFPAdLoader = GADAdLoader(adUnitID: placementId, rootViewController: displayingViewController, adTypes: adTypes, options: [adOptions])
@@ -109,6 +110,7 @@ extension NativeAdView: GADAdLoaderDelegate {
     func adLoader(_ adLoader: GADAdLoader, didFailToReceiveAdWithError error: GADRequestError) {
         isLoading = false
         adLoadedSuccessfully = false
+        delegate?.adFailedToLoad()
     }
 }
 

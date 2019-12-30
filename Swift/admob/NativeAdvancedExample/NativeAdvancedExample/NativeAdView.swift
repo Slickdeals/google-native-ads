@@ -112,6 +112,19 @@ extension NativeAdView: GADAdLoaderDelegate {
     }
 }
 
+extension NativeAdView: DFPBannerAdLoaderDelegate {
+    func adLoader(_ adLoader: GADAdLoader, didReceive bannerView: DFPBannerView) {
+        self.addSubview(bannerView, withConstraints: [(.width, 320), (.height, 50), (.centerX, self.center.x), (.centerY, self.center.y)])
+        isLoading = false
+        adLoadedSuccessfully = true
+        delegate?.adLoadedSuccessfully()
+    }
+    
+    func validBannerSizes(for adLoader: GADAdLoader) -> [NSValue] {
+        return [NSValueFromGADAdSize(kGADAdSizeBanner)]
+    }
+}
+
 extension NativeAdView: GADUnifiedNativeAdLoaderDelegate {
     func adLoader(_ adLoader: GADAdLoader, didReceive nativeAd: GADUnifiedNativeAd) {
         guard let unifiedAdView = Bundle.main.loadNibNamed("DFPUnifiedNativeAdView", owner: nil, options: nil)?.first as? SDGADUnifiedNativeAdView else { return }

@@ -160,8 +160,36 @@
                     <view key="view" contentMode="scaleToFill" id="bOb-L6-xDz" userLabel="Main View">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q6b-4c-Psg">
+                                <rect key="frame" x="20" y="144" width="335" height="100"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="l0m-zr-u5b"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kay-uy-6bL">
+                                <rect key="frame" x="164" y="264" width="47" height="30"/>
+                                <state key="normal" title="Reload"/>
+                                <connections>
+                                    <action selector="reloadAdTapped:" destination="rTa-Ak-SHk" eventType="touchUpInside" id="cSJ-TS-FKu"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kay-uy-6bL" firstAttribute="top" secondItem="Q6b-4c-Psg" secondAttribute="bottom" constant="20" id="3dZ-r5-oXU"/>
+                            <constraint firstAttribute="trailing" secondItem="Q6b-4c-Psg" secondAttribute="trailing" constant="20" id="5KD-PN-d0l"/>
+                            <constraint firstItem="Q6b-4c-Psg" firstAttribute="leading" secondItem="bOb-L6-xDz" secondAttribute="leading" constant="20" id="TAP-b6-wTh"/>
+                            <constraint firstItem="kay-uy-6bL" firstAttribute="centerX" secondItem="bOb-L6-xDz" secondAttribute="centerX" id="f8d-G9-EWY"/>
+                            <constraint firstItem="Q6b-4c-Psg" firstAttribute="top" secondItem="O7z-f8-Zpe" secondAttribute="bottom" constant="100" id="nUG-v8-Jn4"/>
+                            <constraint firstItem="Q6b-4c-Psg" firstAttribute="centerX" secondItem="bOb-L6-xDz" secondAttribute="centerX" id="xPU-v1-sTW"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="adPlaceholder" destination="Q6b-4c-Psg" id="Cer-An-qBJ"/>
+                        <outlet property="reloadAdButton" destination="kay-uy-6bL" id="Qhk-Rx-ju2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xG2-yg-tzF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
